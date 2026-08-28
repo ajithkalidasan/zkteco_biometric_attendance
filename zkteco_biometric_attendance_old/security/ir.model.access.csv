@@ -8,4 +8,3 @@ access_zk_attendance_log_manager,zk.attendance.log.manager,model_zk_attendance_l
 access_zk_device_command_user,zk.device.command.user,model_zk_device_command,group_zk_attendance_user,1,0,0,0
 access_zk_device_command_manager,zk.device.command.manager,model_zk_device_command,group_zk_attendance_manager,1,1,1,1
 access_zk_device_sync_wizard,zk.device.sync.wizard,model_zk_device_sync_wizard,group_zk_attendance_manager,1,1,1,1
-access_zk_attendance_dashboard,zk.attendance.dashboard,model_zk_attendance_dashboard,group_zk_attendance_user,1,0,0,0

@@ -38,7 +38,6 @@ then converted into `hr.attendance` records by a single, shared
         "wizard/device_sync_wizard_views.xml",
         "views/res_config_settings_views.xml",
         "views/hr_attendance_views.xml",
-        "views/zk_attendance_dashboard_views.xml",
         "views/menus.xml",
     ],
     "assets": {
@@ -46,6 +45,9 @@ then converted into `hr.attendance` records by a single, shared
             "zkteco_biometric_attendance/static/src/components/dashboard/dashboard.js",
             "zkteco_biometric_attendance/static/src/components/dashboard/dashboard.xml",
             "zkteco_biometric_attendance/static/src/components/dashboard/dashboard.scss",
+            "zkteco_biometric_attendance/static/src/components/monthly_calendar/monthly_calendar.js",
+            "zkteco_biometric_attendance/static/src/components/monthly_calendar/monthly_calendar.xml",
+            "zkteco_biometric_attendance/static/src/components/monthly_calendar/monthly_calendar.scss",
         ],
     },
     "installable": True,

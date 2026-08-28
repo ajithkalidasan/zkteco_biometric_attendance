@@ -4,9 +4,6 @@
               parent="hr_attendance.menu_hr_attendance_root"
               sequence="11" groups="zkteco_biometric_attendance.group_zk_attendance_user"/>
 
-    <menuitem id="menu_zk_dashboard" name="Dashboard"
-              parent="menu_zk_attendance_root" action="action_zk_attendance_dashboard_client" sequence="5"/>
-
     <menuitem id="menu_zk_device" name="Devices"
               parent="menu_zk_attendance_root" action="action_zk_device" sequence="10"/>
 

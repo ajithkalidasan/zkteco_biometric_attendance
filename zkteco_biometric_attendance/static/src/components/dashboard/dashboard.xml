@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="zkteco_biometric_attendance.Dashboard" owl="1">
+        <div class="zk-dashboard-container o_action">
+            <div class="container-fluid py-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="text-primary fw-bold m-0"><i class="fa fa-dashboard me-2"/> Biometric Attendance Dashboard</h2>
+                    <button class="btn btn-outline-primary" t-on-click="loadData">
+                        <i class="fa fa-refresh me-1"/> Refresh
+                    </button>
+                </div>
+                
+                <!-- KPI Cards -->
+                <div class="row g-4 mb-4">
+                    <!-- Devices -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="zk-card zk-card-info" t-on-click="() => this.openAction('zkteco_biometric_attendance.action_zk_device')">
+                            <div class="zk-card-icon-wrapper"><i class="fa fa-hdd-o"/></div>
+                            <div class="zk-card-content">
+                                <h3 t-esc="state.data.device_count"/>
+                                <span>Total Devices</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Online -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="zk-card zk-card-success" t-on-click="() => this.openAction('zkteco_biometric_attendance.action_zk_device', {'search_default_filter_online': 1})">
+                            <div class="zk-card-icon-wrapper"><i class="fa fa-wifi"/></div>
+                            <div class="zk-card-content">
+                                <h3 t-esc="state.data.online_device_count"/>
+                                <span>Online Devices</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Offline -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="zk-card zk-card-danger" t-on-click="() => this.openAction('zkteco_biometric_attendance.action_zk_device', {'search_default_filter_offline': 1})">
+                            <div class="zk-card-icon-wrapper"><i class="fa fa-chain-broken"/></div>
+                            <div class="zk-card-content">
+                                <h3 t-esc="state.data.offline_device_count"/>
+                                <span>Offline Devices</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Today Logs -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="zk-card zk-card-indigo" t-on-click="() => this.openAction('zkteco_biometric_attendance.action_zk_attendance_log', {'search_default_filter_today': 1})">
+                            <div class="zk-card-icon-wrapper"><i class="fa fa-calendar-check-o"/></div>
+                            <div class="zk-card-content">
+                                <h3 t-esc="state.data.today_log_count"/>
+                                <span>Today's Logs</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Unprocessed -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="zk-card zk-card-warning" t-on-click="() => this.openAction('zkteco_biometric_attendance.action_zk_attendance_log', {'search_default_filter_unprocessed': 1})">
+                            <div class="zk-card-icon-wrapper"><i class="fa fa-clock-o"/></div>
+                            <div class="zk-card-content">
+                                <h3 t-esc="state.data.unprocessed_log_count"/>
+                                <span>Unprocessed Logs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Errors -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="zk-card zk-card-danger" t-on-click="() => this.openAction('zkteco_biometric_attendance.action_zk_attendance_log', {'search_default_filter_errors': 1})">
+                            <div class="zk-card-icon-wrapper"><i class="fa fa-exclamation-triangle"/></div>
+                            <div class="zk-card-content">
+                                <h3 t-esc="state.data.error_log_count"/>
+                                <span>Error Logs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- All Logs -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="zk-card zk-card-primary" t-on-click="() => this.openAction('zkteco_biometric_attendance.action_zk_attendance_log')">
+                            <div class="zk-card-icon-wrapper"><i class="fa fa-list"/></div>
+                            <div class="zk-card-content">
+                                <h3 t-esc="state.data.log_count"/>
+                                <span>All Raw Logs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Last Punch -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="zk-card zk-card-purple">
+                            <div class="zk-card-icon-wrapper"><i class="fa fa-history"/></div>
+                            <div class="zk-card-content">
+                                <h3 class="text-truncate" style="font-size: 1.2rem; margin-bottom: 0.3rem;" t-esc="state.data.last_punch_time or 'None'"/>
+                                <span>Latest Punch</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tables Row -->
+                <div class="row">
+                    <!-- Devices Table -->
+                    <div class="col-12 col-lg-6 mb-4">
+                        <div class="card shadow-sm border-0 h-100">
+                            <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0 fw-bold text-secondary"><i class="fa fa-server me-2 text-primary"/> Devices Overview</h5>
+                                <button class="btn btn-sm btn-link text-decoration-none" t-on-click="() => this.openAction('zkteco_biometric_attendance.action_zk_device')">View All</button>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle mb-0">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th class="ps-3">Name</th>
+                                                <th>Serial</th>
+                                                <th>Status</th>
+                                                <th>Last Sync</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-if="state.data.devices.length === 0">
+                                                <tr>
+                                                    <td colspan="4" class="text-center py-4 text-muted">No devices configured</td>
+                                                </tr>
+                                            </t>
+                                            <tr t-foreach="state.data.devices" t-as="device" t-key="device.id">
+                                                <td class="ps-3 fw-semibold"><t t-esc="device.name"/></td>
+                                                <td><span class="text-muted"><t t-esc="device.serial_number"/></span></td>
+                                                <td>
+                                                    <span t-attf-class="badge rounded-pill #{device.state === 'online' ? 'bg-success' : (device.state === 'offline' ? 'bg-danger' : 'bg-secondary')}">
+                                                        <t t-esc="device.state"/>
+                                                    </span>
+                                                </td>
+                                                <td><t t-esc="device.last_sync or '-'"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Logs Table -->
+                    <div class="col-12 col-lg-6 mb-4">
+                        <div class="card shadow-sm border-0 h-100">
+                            <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0 fw-bold text-secondary"><i class="fa fa-users me-2 text-info"/> Recent Punches</h5>
+                                <button class="btn btn-sm btn-link text-decoration-none" t-on-click="() => this.openAction('zkteco_biometric_attendance.action_zk_attendance_log')">View All</button>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle mb-0">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th class="ps-3">Time</th>
+                                                <th>Employee</th>
+                                                <th>Device</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-if="state.data.recent_logs.length === 0">
+                                                <tr>
+                                                    <td colspan="4" class="text-center py-4 text-muted">No recent punches</td>
+                                                </tr>
+                                            </t>
+                                            <tr t-foreach="state.data.recent_logs" t-as="log" t-key="log.id">
+                                                <td class="ps-3"><t t-esc="log.punch_time"/></td>
+                                                <td class="fw-semibold"><t t-esc="log.employee_name or log.device_user_id"/></td>
+                                                <td><span class="text-muted"><t t-esc="log.device_name"/></span></td>
+                                                <td>
+                                                    <t t-if="log.processing_error">
+                                                        <span class="badge bg-danger" t-att-title="log.processing_error">Error</span>
+                                                    </t>
+                                                    <t t-elif="log.processed">
+                                                        <span class="badge bg-success">Processed</span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span class="badge bg-warning text-dark">Pending</span>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

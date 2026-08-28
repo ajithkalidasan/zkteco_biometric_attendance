@@ -6,4 +6,3 @@ from . import zk_user_mapping
 from . import zk_attendance_log
 from . import hr_employee
 from . import hr_attendance
-from . import zk_attendance_dashboard

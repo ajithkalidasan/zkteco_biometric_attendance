@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_zk_device_command_list" model="ir.ui.view">
+        <field name="name">zk.device.command.list</field>
+        <field name="model">zk.device.command</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="state=='pending'" decoration-success="state=='done'"
+                  decoration-danger="state=='failed'" decoration-info="state=='sent'">
+                <field name="device_id"/>
+                <field name="command_id"/>
+                <field name="command_type"/>
+                <field name="command_text"/>
+                <field name="state" widget="badge"/>
+                <field name="sent_date"/>
+                <field name="done_date"/>
+                <field name="result_code" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_zk_device_command" model="ir.actions.act_window">
+        <field name="name">Queued Commands</field>
+        <field name="res_model">zk.device.command</field>
+        <field name="view_mode">list</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No commands queued</p>
+            <p>Queue a reboot or clear-attendance-log from an ADMS/Hybrid
+               device's form — it runs the next time the device checks in.</p>
+        </field>
+    </record>
+</odoo>
