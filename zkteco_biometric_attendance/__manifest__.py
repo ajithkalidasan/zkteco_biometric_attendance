@@ -20,7 +20,7 @@ then converted into `hr.attendance` records by a single, shared
     "images": ["static/description/banner.png"],
     "category": "Human Resources/Attendances",
     "author": "Ajith",
-    "website": "https://www.smruthitechnologies.com",
+    "website": "https://ajithkalidasan.github.io/ajith/",
     "license": "LGPL-3",
     "depends": ["hr_attendance", "hr", "mail"],
     "external_dependencies": {
