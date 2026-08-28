@@ -1,0 +1,20 @@
+# Odoo ignore files
+*.pyc
+*.pyo
+__pycache__/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+
+# OS generated files
+.Trash-*
+.Zone.Identifier
+*:Zone.Identifier
+
+# Temp files
+tmp/
+temp/
