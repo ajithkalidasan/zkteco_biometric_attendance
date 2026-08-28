@@ -1,0 +1,36 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">ZKTeco Biometric Attendance</h2>
+        <h3 class="oe_slogan">A unified, robust ZKTeco biometric attendance integration module for Odoo.</h3>
+        <div class="oe_span12">
+            <p class="oe_mt32">
+                Unlike other modules that force you into a single connection method, this module supports three transport modes out of the box:
+            </p>
+            <ul>
+                <li><b>PyZK</b> – Odoo connects directly to the device over TCP/IP (typically port 4370). Perfect for local networks.</li>
+                <li><b>ADMS (Cloud Push)</b> – The device pushes attendance logs to Odoo over HTTP (<code>/iclock/cdata</code>). Ideal for remote sites without static IPs or VPNs.</li>
+                <li><b>Hybrid</b> – Uses ADMS for real-time attendance pushes, while keeping PyZK available for executing immediate device commands (like rebooting or clearing logs).</li>
+            </ul>
+            <p>
+                Regardless of the transport method, all punches funnel through a single, shared <code>zk.attendance.log</code> raw table and are processed by a unified <code>zk.attendance.processor</code>. This ensures that check-in/check-out logic, deduplication, employee mapping, and timezone handling are consistently applied across all devices.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">Key Features</h2>
+        <div class="oe_span12">
+            <ul>
+                <li><b>Multi-Transport Support:</b> Easily mix and match PyZK and ADMS devices across your organization.</li>
+                <li><b>Deduplication:</b> Uses SHA-256 fingerprinting on raw logs to silently ignore duplicate punches.</li>
+                <li><b>Flexible User Mapping:</b> Map employees to biometric user IDs on a per-device basis.</li>
+                <li><b>Night-Shift & Open Attendance Handling:</b> Automatically pairs check-ins and check-outs, configurable for 24h shifts.</li>
+                <li><b>Timezone Awareness:</b> Handles punches in the device's local timezone and converts them accurately to Odoo's UTC storage.</li>
+                <li><b>ADMS Command Queue:</b> Remotely reboot or clear logs on ADMS devices securely.</li>
+                <li><b>ADMS Auto-Registration:</b> Optionally register new devices automatically on first contact.</li>
+            </ul>
+        </div>
+    </div>
+</section>

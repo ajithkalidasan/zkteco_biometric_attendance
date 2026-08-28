@@ -17,6 +17,7 @@ then converted into `hr.attendance` records by a single, shared
 """,
     "version": "19.0.1.0.0",
     "keywords": ["biometric", "zkteco", "attendance", "adms", "pyzk", "machine", "device", "sync"],
+    "images": ["static/description/banner.png"],
     "category": "Human Resources/Attendances",
     "author": "Ajith",
     "website": "https://www.smruthitechnologies.com",
