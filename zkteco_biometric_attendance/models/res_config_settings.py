@@ -6,6 +6,6 @@ class ResConfigSettings(models.TransientModel):
 
     adms_auto_register = fields.Boolean(
         string="ADMS Auto Register",
-        config_parameter="zk_attendance.adms_auto_register",
+        config_parameter="zkteco_biometric_attendance.adms_auto_register",
         help="Automatically register unknown devices when they connect via ADMS for the first time."
     )

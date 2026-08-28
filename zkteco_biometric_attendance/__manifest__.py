@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "ZK Attendance",
+    "name": "ZKTeco Biometric Attendance (PyZK & ADMS)",
     "summary": "Unified ZKTeco biometric attendance: PyZK (direct) and ADMS (cloud push) modes",
     "description": """
 ZK Attendance
@@ -16,6 +16,7 @@ then converted into `hr.attendance` records by a single, shared
 `zk.attendance.processor` service.
 """,
     "version": "19.0.1.0.0",
+    "keywords": ["biometric", "zkteco", "attendance", "adms", "pyzk", "machine", "device", "sync"],
     "category": "Human Resources/Attendances",
     "author": "Ajith",
     "website": "https://www.smruthitechnologies.com",

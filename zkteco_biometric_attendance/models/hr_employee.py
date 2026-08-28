@@ -23,7 +23,7 @@ class HrEmployee(models.Model):
     def action_view_zk_mappings(self):
         self.ensure_one()
         action = self.env["ir.actions.actions"]._for_xml_id(
-            "zk_attendance.action_zk_user_mapping"
+            "zkteco_biometric_attendance.action_zk_user_mapping"
         )
         action["domain"] = [("employee_id", "=", self.id)]
         action["context"] = {"default_employee_id": self.id}

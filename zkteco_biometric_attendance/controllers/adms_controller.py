@@ -6,7 +6,7 @@ These routes are `auth="public"` by necessity — the device has no Odoo
 session, only a URL configured in its own Cloud/ADMS settings. Every route
 therefore re-validates the device by serial number before touching any
 data; an unknown SN is rejected unless auto-registration is explicitly
-turned on (ir.config_parameter `zk_attendance.adms_auto_register`).
+turned on (ir.config_parameter `zkteco_biometric_attendance.adms_auto_register`).
 
 All plain-text (not JSON) — this is what the firmware expects.
 """
@@ -32,7 +32,7 @@ class ZkAdmsController(http.Controller):
             return device
 
         auto_register = request.env["ir.config_parameter"].sudo().get_param(
-            "zk_attendance.adms_auto_register", "False"
+            "zkteco_biometric_attendance.adms_auto_register", "False"
         ) == "True"
         if not auto_register:
             _logger.warning("ADMS request from unregistered SN=%s rejected (auto-register off).", sn)

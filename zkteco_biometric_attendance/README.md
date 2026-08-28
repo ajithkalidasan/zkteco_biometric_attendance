@@ -29,7 +29,7 @@ Regardless of the transport method, all punches funnel through a single, shared 
    ```bash
    pip install pyzk
    ```
-2. Copy the `zk_attendance` module into your Odoo `custom_addons` directory.
+2. Copy the `zkteco_biometric_attendance` module into your Odoo `custom_addons` directory.
 3. Restart Odoo, go to **Apps**, click **Update Apps List**, search for **ZK Attendance**, and click **Install**.
 
 ---
@@ -65,7 +65,7 @@ Regardless of the transport method, all punches funnel through a single, shared 
 
 This module is designed to be a solid, unopinionated foundation. It deliberately avoids enforcing specific business rules (like overtime slab rounding, late-entry penalties, or approval workflows) because these vary wildly between companies.
 
-To add your own business rules, simply create a small custom module that depends on `zk_attendance` and overrides the `_finalize_attendance` hook:
+To add your own business rules, simply create a small custom module that depends on `zkteco_biometric_attendance` and overrides the `_finalize_attendance` hook:
 
 ```python
 from odoo import models

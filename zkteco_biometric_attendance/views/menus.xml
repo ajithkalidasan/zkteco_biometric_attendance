@@ -2,7 +2,7 @@
 <odoo>
     <menuitem id="menu_zk_attendance_root" name="Biometric Attendance"
               parent="hr_attendance.menu_hr_attendance_root"
-              sequence="11" groups="zk_attendance.group_zk_attendance_user"/>
+              sequence="11" groups="zkteco_biometric_attendance.group_zk_attendance_user"/>
 
     <menuitem id="menu_zk_device" name="Devices"
               parent="menu_zk_attendance_root" action="action_zk_device" sequence="10"/>
@@ -18,10 +18,10 @@
 
     <menuitem id="menu_zk_device_sync_wizard" name="Sync Devices Now"
               parent="menu_zk_attendance_root" action="action_zk_device_sync_wizard"
-              sequence="40" groups="zk_attendance.group_zk_attendance_manager"/>
+              sequence="40" groups="zkteco_biometric_attendance.group_zk_attendance_manager"/>
 
     <menuitem id="menu_zk_attendance_config" name="Configuration"
-              parent="menu_zk_attendance_root" sequence="100" groups="zk_attendance.group_zk_attendance_manager"/>
+              parent="menu_zk_attendance_root" sequence="100" groups="zkteco_biometric_attendance.group_zk_attendance_manager"/>
 
     <menuitem id="menu_zk_attendance_settings" name="Settings"
               parent="menu_zk_attendance_config" action="action_zk_attendance_config_settings" sequence="10"/>

@@ -275,7 +275,7 @@ class ZkDevice(models.Model):
     def action_view_user_mappings(self):
         self.ensure_one()
         action = self.env["ir.actions.actions"]._for_xml_id(
-            "zk_attendance.action_zk_user_mapping"
+            "zkteco_biometric_attendance.action_zk_user_mapping"
         )
         action["domain"] = [("device_id", "=", self.id)]
         action["context"] = {"default_device_id": self.id}
@@ -284,7 +284,7 @@ class ZkDevice(models.Model):
     def action_view_attendance_logs(self):
         self.ensure_one()
         action = self.env["ir.actions.actions"]._for_xml_id(
-            "zk_attendance.action_zk_attendance_log"
+            "zkteco_biometric_attendance.action_zk_attendance_log"
         )
         action["domain"] = [("device_id", "=", self.id)]
         return action
@@ -292,7 +292,7 @@ class ZkDevice(models.Model):
     def action_view_commands(self):
         self.ensure_one()
         action = self.env["ir.actions.actions"]._for_xml_id(
-            "zk_attendance.action_zk_device_command"
+            "zkteco_biometric_attendance.action_zk_device_command"
         )
         action["domain"] = [("device_id", "=", self.id)]
         action["context"] = {"default_device_id": self.id}

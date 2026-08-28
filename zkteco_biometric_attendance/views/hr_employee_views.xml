@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <div name="button_box" position="inside">
                 <button name="action_view_zk_mappings" type="object" class="oe_stat_button" icon="fa-fingerprint"
-                        groups="zk_attendance.group_zk_attendance_user">
+                        groups="zkteco_biometric_attendance.group_zk_attendance_user">
                     <field name="zk_user_mapping_count" widget="statinfo" string="Biometric IDs"/>
                 </button>
             </div>
