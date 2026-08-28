@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_form_zk_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.form.zk.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_view_zk_mappings" type="object" class="oe_stat_button" icon="fa-fingerprint"
+                        groups="zk_attendance.group_zk_attendance_user">
+                    <field name="zk_user_mapping_count" widget="statinfo" string="Biometric IDs"/>
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>

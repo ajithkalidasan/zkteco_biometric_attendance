@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_zk_attendance_log_list" model="ir.ui.view">
+        <field name="name">zk.attendance.log.list</field>
+        <field name="model">zk.attendance.log</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="processing_error" decoration-muted="processed">
+                <field name="punch_time"/>
+                <field name="device_id"/>
+                <field name="device_user_id"/>
+                <field name="employee_id"/>
+                <field name="punch_type"/>
+                <field name="verify_type"/>
+                <field name="source"/>
+                <field name="processed" widget="boolean_toggle"/>
+                <field name="processing_error" optional="show"/>
+                <button name="action_reprocess" type="object" string="Reprocess" icon="fa-refresh"
+                        invisible="not processing_error"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_zk_attendance_log_search" model="ir.ui.view">
+        <field name="name">zk.attendance.log.search</field>
+        <field name="model">zk.attendance.log</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="device_user_id"/>
+                <field name="employee_id"/>
+                <field name="device_id"/>
+                <filter string="Unprocessed" name="filter_unprocessed" domain="[('processed','=',False)]"/>
+                <filter string="Errors" name="filter_errors" domain="[('processing_error','!=',False)]"/>
+                <filter string="Unmapped Employee" name="filter_unmapped" domain="[('employee_id','=',False)]"/>
+                <separator/>
+                <filter string="PyZK" name="filter_pyzk" domain="[('source','=','pyzk')]"/>
+                <filter string="ADMS" name="filter_adms" domain="[('source','=','adms')]"/>
+                <group>
+                    <filter string="Device" name="group_device" context="{'group_by': 'device_id'}"/>
+                    <filter string="Employee" name="group_employee" context="{'group_by': 'employee_id'}"/>
+                    <filter string="Source" name="group_source" context="{'group_by': 'source'}"/>
+                    <filter string="Punch Day" name="group_day" context="{'group_by': 'punch_time:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_zk_attendance_log" model="ir.actions.act_window">
+        <field name="name">Raw Attendance Logs</field>
+        <field name="res_model">zk.attendance.log</field>
+        <field name="view_mode">list</field>
+        <field name="search_view_id" ref="view_zk_attendance_log_search"/>
+        <field name="context">{'search_default_filter_unprocessed': 0}</field>
+    </record>
+</odoo>

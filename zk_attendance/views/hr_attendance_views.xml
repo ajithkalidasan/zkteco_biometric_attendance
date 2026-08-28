@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_attendance_view_form_zk_inherit" model="ir.ui.view">
+        <field name="name">hr.attendance.form.zk.inherit</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.hr_attendance_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="ZK Device Information" name="zk_info">
+                        <group>
+                            <group>
+                                <field name="zk_device_id"/>
+                                <field name="zk_source"/>
+                            </group>
+                            <group>
+                                <field name="zk_check_in_log_id"/>
+                                <field name="zk_check_out_log_id"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+</odoo>
